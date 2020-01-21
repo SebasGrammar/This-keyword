@@ -14,3 +14,18 @@ let test = {
 const scriptArrow = () => console.log(this)
 
 // https://stackblitz.com/edit/react-uln4zw
+
+let nested = {
+    name: "nested",
+    log() {
+        console.log(this)
+    },
+    first: {
+        log() {
+            console.log(this)
+        }
+    }
+}
+
+nested.log()
+nested.first.log()
