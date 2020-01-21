@@ -12,3 +12,5 @@ let test = {
 }
 
 const scriptArrow = () => console.log(this)
+
+// https://stackblitz.com/edit/react-uln4zw
