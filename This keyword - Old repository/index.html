@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="main.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button class="boundThis" onclick="console.log(this)">Bound this</button>
+    <button class="func" onclick="(function() {console.log(this)})()">(function() {console.log(this)})()</button>
+    <button class="arr" onclick="(() => console.log(this))()">Arrow function</button>
+    <button onclick="test.logThis()">test.logThis()</button>
+    <button onclick="test.logThis.bind(this)()">test.logThis.bind(this)</button>
+    <button onclick="logThis()">logThis()</button>
+    <button onclick="logThis.bind(this)()">Bound logThis()</button>
+    <button id="test">Test</button>
+    <button id="test2">Test 2</button>
+    <!--REACT-->
+    <!-- <div id="test">TEST</div> -->   
+</body>
+</html>

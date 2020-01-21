@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>This keyword</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+   
+    <button onclick="(function() {console.log(this)})()">IIFE</button>
+    <button onclick="(() => {console.log(this)})()">Arrow IIFE</button>
+
+    <!-- IIFE FUNCTIONS -->
+
+    <button onclick="function logThis() {console.log(this)}; logThis()">Log this</button>
+    <button onclick="log()">Log</button>
+    <button onclick="log.call(this)">Bound log</button>
+
+    <!-- So... it seems like the onclick event here is a function. If I put a function inside another,
+    the inner function loses its "this" reference, unless it's an arrow function. There are a few ways
+    around that issue, such as using the bind/call/apply methods, passing "this" as an argument, creating
+    a variable (something like that = this) and assign it the value of "this" (this is actually going
+    to save the reference to this in a variable)... -->
+
+    <button onclick="console.log(this)">No inner function</button>
+
+    <!-- This is different from the two above in that we are not defining any new functions
+    or using outer functions (for lack of a better way to call them) inside the onclick method, but
+    writing its body. 
+
+    You can think of all this in terms of layers. The deeper a layer is, the more difficult it is to
+    keep a reference to "this". It could be said that the function above is superficial, or that it has 
+    a 0 depth. Using "outer" functions adds a layer of depth, unless it is an arrow function. It is worth
+    noting that arrow functions cannot be rebound (lexical scope), so bind/call/apply methods won't work
+    on them. -->
+
+    <button onclick="test.log()">Another context... this is just a trigger</button>
+    <button onclick="let a = test.log; a(); a.call(this)">Just a reference to a function</button>
+
+    <!-- These are self-explanatory -->
+
+    <button onclick="thisLog(this)">This as an argument</button>
+    <button onclick="that = this; (function() {console.log(that)})()">that = this</button>
+    <button onclick="scriptArrow()">Arrow functions cannot be rebound</button>
+
+
+
+    <script src="main.js"></script>
+</body>
+</html>
