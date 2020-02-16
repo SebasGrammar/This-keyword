@@ -80,5 +80,26 @@ let test = {
 
 test.log.bind(test)()
 
+/************************** DIFFERENT */
+
+let test = [1, 2, 3, 4, 5]
+
+/*
+for (let item in test) {
+  console.log([item, test[item]])
+}
+*/
+
+function log(array, callback, target) {
+  const boundCallback = target ? callback.bind(target) : callback
+  for (let element of array) {
+    boundCallback()
+  }
+}
+
+// log(test, function(element) {console.log(element)}, [1, 2, 3])
+log(test, function(element) {console.log(this)}, [1, 2, 3])
+
+*/
 
 
